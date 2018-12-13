@@ -1,0 +1,17 @@
+舒服，Json格式就是Python里字典的字符串表示
+
+安装requests库：pip install requests
+
+get方法
+查看最新帖子号：
+http://www.scuinfo.com/api/posts?pageSize=15
+第二个json
+
+查看帖子：
+http://www.scuinfo.com/api/post?id=帖子号
+
+查看帖子回复：
+http://www.scuinfo.com/api/comments/?postId=帖子号&pageSize=15
+
+都要添加请求头
+Referer：http://www.scuinfo.com/
