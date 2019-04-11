@@ -1,0 +1,54 @@
+1.requests
+data=requests.get(url)
+
+data.text：文本格式响应内容
+data.content：二进制格式响应内容
+data.json():将响应内容转为json，成功后可像字典一样使用
+data.url：重定向后网址
+data.status_code：响应状态码
+data.headers：响应头
+data.cookies['name']：返回响应cookies
+data.encoding="UTF-8"：设置编码
+
+
+可选参数：
+headers：请求头，一个字典
+请求参数，get为params，post为data，可以表单形式（字典）或字符串形式（json字符串，payload）传递
+cookies：设置cookies
+allow_redirects：是否允许重定向
+proxies代理服务器，为字典，格式如下
+px={
+  "http": "http://10.10.1.10:3128",
+  "https": "http://10.10.1.10:1080",
+  "http": "socks5://127.0.0.1:1080"
+}
+
+
+
+获取requests.Session()，自动管理cookies
+
+2.json
+字典转json：json.dumps(dic)
+json转字典：json.loads(string)
+dumps与load是用来处理二进制格式的
+
+
+3.bs4
+from bs4 import BeautifulSoup
+soup=BeautifulSoup(f.read(),'html.parser')
+
+每个节点其实就是格式化的字符串
+节点查找（注意是返回列表！一般要取下标提取）：
+soup.find_all( name , attrs , recursive , string , **kwargs )
+name为标签名（a、h、div）
+attrs为标签属性，字典。也可单独写如id="",class_=""，某个属性置为True表示搜索带该属性的标签（不管其值）
+
+访问子节点：
+通过. 根据类型名访问，若有多个返回第一个
+.contents 所有子节点的列表
+
+节点查值：
+soup.name 节点名
+soup.string 节点值 >这里的<
+soup.attr 所有属性，字典
+soup["class"] 根据属性名查值
